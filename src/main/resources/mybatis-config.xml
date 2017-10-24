@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <!--全局属性-->
+    <settings>
+        <!--jdbc的getGeneratedKeys 获取数据库自增主键值-->
+       <setting name="useGeneratedKeys" value="true"/>
+        <!--列别名 替换列名-->
+       <setting name="useColumnLabel" value="true"/>
+        <!--驼峰名规范转换-->
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+     <!--<typeAliases>-->
+       <!--<typeAlias alias="UserAlias" type="org.apache.ibatis.submitted.complex_property.User"/>-->
+     <!--</typeAliases> &ndash;&gt;-->
+
+    <!--<environments default="development">-->
+        <!--<environment id="development">-->
+            <!--<transactionManager type="JDBC">-->
+                <!--<property name="" value=""/>-->
+            <!--</transactionManager>-->
+            <!--<dataSource type="UNPOOLED">-->
+                <!--<property name="driver" value="com.mysql.jdbc.Driver"/>-->
+                <!--<property name="url" value="jdbc:mysql://localhost:3306/micro_message"/>-->
+                <!--<property name="username" value="root"/>-->
+                <!--<property name="password" value="123456"/>-->
+            <!--</dataSource>-->
+        <!--</environment>-->
+    <!--</environments>-->
+
+    <!--<mappers>-->
+        <!--<mapper resource="com/gjp/config/sqlxml/Message.xml"/>-->
+        <!--<mapper resource="com/gjp/config/sqlxml/Command.xml"/>-->
+        <!--<mapper resource="com/gjp/config/sqlxml/CommandContent.xml"/>-->
+    <!--</mappers>-->
+
+</configuration>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gjp.dao.SeckillDao">
+
+    <!--为接口方法提供配置-->
+    <update id="reduceNumber">
+        <![CDATA[
+        UPDATE seckill
+        SET number = number - 1
+        WHERE seckill_id = #{seckillId}
+        AND start_time <= #{killTime}
+        AND end_time >= #{killTime}
+        AND number > 0
+        ]]>;
+    </update>
+
+    <select id="queryById" resultType="SecKill" parameterType="long">
+        SELECT
+        seckill_id,name,number,create_time,start_time,end_time
+        FROM
+        seckill
+        WHERE
+        seckill_id = #{seckillId};
+    </select>
+<!-- 本质查询的是list-->
+    <select id="queryAll" resultType="SecKill">
+        SELECT
+        seckill_id,name,number,create_time,start_time,end_time
+        FROM
+        seckill
+        ORDER BY create_time DESC
+        LIMIT #{offset},#{limit}
+    </select>
+</mapper>
