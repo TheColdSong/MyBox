@@ -43,13 +43,14 @@ public class SeckillServiceTest {
         logger.info("seckill={}",seckill);
     }
 
+    //暴漏地址和秒杀执行合一
     @Test
     public void exportSeckillUrl() throws Exception {
         long userPhone = 13888881115L;
-        Exposer exposer = seckillService.exportSeckillUrl(1000);
+        Exposer exposer = seckillService.exportSeckillUrl(1001);
         if( exposer.isExposed()){
             String md5 = exposer.getMd5();
-            SeckillExecution seckillExecution = seckillService.excuteSeckill(1000, userPhone, md5);
+            SeckillExecution seckillExecution = seckillService.excuteSeckill(1001, userPhone, md5);
             try{
                 logger.info("result={}",seckillExecution);
             }catch (RepeatKillException e){

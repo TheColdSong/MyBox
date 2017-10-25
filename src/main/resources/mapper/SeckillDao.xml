@@ -35,4 +35,13 @@
         ORDER BY create_time DESC
         LIMIT #{offset},#{limit}
     </select>
+    <!--存储过程执行-->
+    <select id="killByProcedure" statementType="CALLABLE">
+        call execute_seckill(
+        #{seckillId,jdbcType=BIGINT,mode=IN},
+        #{phone,jdbcType=BIGINT,mode=IN},
+        #{killTime,jdbcType=TIMESTAMP,mode=IN},
+        #{result,jdbcType=INTEGER,mode=OUT}
+        )
+    </select>
 </mapper>

@@ -130,7 +130,7 @@ var seckill= {
                     var startTime = params['startTime'];
                     var endTime = params['endTime'];
                     var seckillId = params['seckillId'];
-                    //发送到controller
+                    //发送到controller result是控制器返回的对象
                     $.get(seckill.URL.now(), {}, function (result) {
                         if (result && result['success']) {
                             var nowTime = result['data']; //拿到当前时间

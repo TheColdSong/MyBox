@@ -93,17 +93,17 @@ public class SeckillController {
      * @return
      */
 
-    @RequestMapping(value = "/{seckillId}/{md5}/execution" , method = RequestMethod.POST,
-            produces ={"application/json;charset=utf-8"} )
+    @RequestMapping(value = "/{seckillId}/{md5}/execution", method = RequestMethod.POST,
+            produces = {"application/json;charset=utf-8"})
     @ResponseBody//返回json格式
-    public  SeckillResult<SeckillExecution> execute(@PathVariable("seckillId")Long seckillId ,
-                                                    @PathVariable("md5")String md5 ,
-                                                    @CookieValue(value = "killPhone",required = false) Long userPhone){
+    public SeckillResult<SeckillExecution> execute(@PathVariable("seckillId") Long seckillId,
+                                                   @PathVariable("md5") String md5,
+                                                   @CookieValue(value = "killPhone", required = false) Long userPhone) {
         SeckillResult<SeckillExecution> result;//灰色因为里面的秒杀成功属性没用到
         if(userPhone==null){
             return result = new SeckillResult(false,"用户未注册");
         }try{
-            SeckillExecution seckillExecution = seckillService.excuteSeckill(seckillId, userPhone, md5);
+            SeckillExecution seckillExecution = seckillService.excuteSeckillByProcedure(seckillId, userPhone, md5);
             return result = new SeckillResult(true,seckillExecution);
         } catch (RepeatKillException e) {
             SeckillExecution seckillExecution = new SeckillExecution(seckillId, SeckillStatEnum.REPEAT_KILL);
